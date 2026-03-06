@@ -1,0 +1,107 @@
+/* Colorful, animated chooser UI */
+:root{
+  --bg1: linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%);
+  --bg2: linear-gradient(135deg,#c1ffd7 0%,#8ee3ff 100%);
+  --accent: #6b21a8;
+  --muted: #555;
+}
+
+*{box-sizing:border-box}
+body,html,#root{height:100%}
+
+.choose-auth-root{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:3rem 1rem;
+  background: radial-gradient(circle at 10% 20%, rgba(107,33,168,0.06), transparent 10%),
+              radial-gradient(circle at 90% 80%, rgba(252,182,159,0.06), transparent 12%);
+  position:relative;
+  overflow:hidden;
+}
+
+/* food photo overlay */
+.choose-auth-root::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&q=80&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center 30%;
+  opacity:0.36;
+  z-index:0;
+  pointer-events:none;
+  filter:contrast(0.98) saturate(1.08) blur(0.8px);
+}
+
+.brand{
+  font-weight:800;
+  font-size:2rem;
+  letter-spacing:1px;
+  color:var(--accent);
+  margin-bottom:1.5rem;
+  transform:translateY(-10px);
+  animation: floatIn .8s ease forwards;
+  z-index:2;
+}
+
+.choose-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.25rem;
+  width:min(920px,100%);
+  z-index:2;
+}
+
+.choose-card{
+  background: white;
+  border-radius:14px;
+  padding:1.25rem;
+  box-shadow:0 8px 30px rgba(16,24,40,0.06);
+  transform:translateY(20px);
+  opacity:0;
+  animation: cardIn .7s ease forwards;
+  transition:transform .24s ease, box-shadow .18s ease;
+  position:relative;
+  overflow:hidden;
+  z-index:2;
+}
+
+.card-left{ background: var(--bg1); }
+.card-right{ background: var(--bg2); }
+
+.card-head{ display:flex; align-items:center; justify-content:space-between; }
+.card-head h3{ margin:0; font-size:1.3rem }
+.tag{ background: rgba(255,255,255,0.6); padding:.25rem .6rem; border-radius:999px; font-weight:600 }
+.tag.partner{ background: rgba(255,255,255,0.85); color:#0b132b }
+
+.muted{ color:var(--muted); margin:0.75rem 0 1rem }
+
+.actions{ display:flex; gap:.75rem }
+.btn{ padding:.6rem 1rem; border-radius:10px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; justify-content:center }
+.btn.primary{ background: #6b21a8; color:white }
+.btn.outline{ background:transparent; border:2px solid rgba(11,19,43,0.08); color: #0b132b }
+
+.choose-card:hover{ transform:translateY(0); box-shadow:0 18px 40px rgba(11,19,43,0.12) }
+
+.bg-orbs{
+  position:absolute; inset:0; pointer-events:none;
+}
+.bg-orbs::before,
+.bg-orbs::after{
+  content:''; position:absolute; border-radius:999px; filter:blur(36px); opacity:0.6;
+}
+.bg-orbs::before{ width:360px; height:360px; background:linear-gradient(45deg, rgba(107,33,168,0.35), rgba(139,92,246,0.2)); left:-80px; top:-60px; transform:translateY(-20px); animation: floatSlow 6s ease-in-out infinite }
+.bg-orbs::after{ width:280px; height:280px; background:linear-gradient(45deg, rgba(252,182,159,0.45), rgba(255,236,210,0.25)); right:-40px; bottom:-80px; animation: floatSlow 8s ease-in-out infinite }
+
+/* Responsive */
+@media (max-width:800px){
+  .choose-grid{ grid-template-columns:1fr; }
+  .brand{ transform:none }
+}
+
+@keyframes cardIn{ to { transform:translateY(0); opacity:1 } }
+@keyframes floatIn{ from { opacity:0; transform:translateY(-10px) } to { opacity:1; transform:none } }
+@keyframes floatSlow{ 0%{transform:translateY(0)}50%{transform:translateY(18px)}100%{transform:translateY(0)} }

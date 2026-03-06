@@ -1,0 +1,120 @@
+/* Shared auth UI */
+.auth-root{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  gap:28px;
+}
+
+.auth-card{
+  width:100%;
+  max-width:420px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:28px;
+  backdrop-filter: blur(6px);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.auth-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+
+.auth-header h2{
+  margin:0;
+  font-size:1.25rem;
+  letter-spacing:-0.2px;
+}
+
+.auth-sub{
+  color:var(--muted);
+  font-size:0.95rem;
+  margin-bottom:18px;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+label{
+  font-size:0.85rem;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text);
+  outline:none;
+  transition:border-color var(--transition), box-shadow var(--transition);
+}
+
+input::placeholder{color:var(--muted)}
+
+input:focus{
+  border-color:var(--accent);
+  box-shadow:0 4px 14px rgba(6,182,212,0.08);
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:12px;
+}
+
+button.primary{
+  background:var(--accent);
+  color:white;
+  border:none;
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+button.ghost{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.alt{
+  margin-top:12px;
+  font-size:0.9rem;
+  color:var(--muted);
+  text-align:center;
+}
+
+.small-link{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
+  margin-left:6px;
+}
+
+.footer-note{
+  margin-top:14px;
+  font-size:0.8rem;
+  color:var(--muted);
+  text-align:center;
+}
