@@ -44,3 +44,37 @@ DishDrop is a **food reel sharing platform** where food partners can upload shor
 ---
 
 ## 📂 Project Structure
+
+DishDrop
+│
+├── backend
+│ ├── controllers
+│ │
+│ ├── models
+│ │
+│ ├── routes
+│ │
+│ └── server.js
+│
+├── frontend
+│ ├── public
+│ │
+│ ├── src
+│ │ ├── assets
+│ │ │
+│ │ ├── pages
+│ │ │ ├── auth
+│ │ │ ├── food-partner
+│ │ │ └── general
+│ │ │
+│ │ ├── routes
+│ │ │ └── AppRoutes.jsx
+│ │ │
+│ │ ├── styles
+│ │ │
+│ │ ├── App.jsx
+│ │ └── main.jsx
+│ │
+│ └── vite.config.js
+│
+└── README.md
